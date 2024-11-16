@@ -11,23 +11,48 @@ public class Weapon : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
     [SerializeField] Ammo ammoSlot;
+    [SerializeField] AmmoType ammoType; // Biến đánh dấu loại đạn
+    [SerializeField] float timeBetweenShots;
+    [SerializeField] int pellets = 10; // Số lượng đạn bắn ra mỗi lần
+    [SerializeField] float spreadAngle = 5f; // Góc phân tán của đạn
+    [SerializeField] bool isShotgun = false; // Biến kiểm tra vũ khí có phải là shotgun hay không
+    [SerializeField] Recoil recoil;
+    [SerializeField] bool isAutomatic = false; // Biến kiểm tra vũ khí có thể bắn liên thanh hay không
+
+    bool canShoot = true;
 
     [SerializeField] GameObject fleshHitEffect;
+
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (isAutomatic)
         {
-            Shoot();
+            if (Input.GetButton("Fire1") && canShoot == true)
+            {
+                StartCoroutine(Shoot());
+            }
+        }
+        else
+        {
+            if (Input.GetButtonDown("Fire1") && canShoot == true)
+            {
+                StartCoroutine(Shoot());
+            }
         }
     }
-    private void Shoot()
+
+    IEnumerator Shoot()
     {
-        if(ammoSlot.GetCurrentAmmo() > 0)
+        canShoot = false;
+        if (ammoSlot.GetCurrentAmmo(ammoType) > 0)
         {
             PlayMuzzleFlash();
             ProcessRaycast();
-            ammoSlot.ReduceCurrentAmmo();
+            recoil.RecoilFire();
+            ammoSlot.ReduceCurrentAmmo(ammoType);
         }
+        yield return new WaitForSeconds(timeBetweenShots);
+        canShoot = true;
     }
 
     private void PlayMuzzleFlash()
@@ -37,19 +62,42 @@ public class Weapon : MonoBehaviour
 
     private void ProcessRaycast()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hit, range))
+        if (isShotgun)
         {
-            CreateHitImpact(hit);
-            Debug.Log("I hit this thing: " + hit.transform.name);
+            for (int i = 0; i < pellets; i++)
+            {
+                Vector3 direction = FPCamera.transform.forward;
+                direction.x += UnityEngine.Random.Range(-spreadAngle, spreadAngle);
+                direction.y += UnityEngine.Random.Range(-spreadAngle, spreadAngle);
 
-            EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
-            if (target == null) return;
-            target.TakeDamage(damage);
+                RaycastHit hit;
+                if (Physics.Raycast(FPCamera.transform.position, direction, out hit, range))
+                {
+                    CreateHitImpact(hit);
+                    Debug.Log("I hit this thing: " + hit.transform.name);
+
+                    EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+                    if (target != null)
+                    {
+                        target.TakeDamage(damage);
+                    }
+                }
+            }
         }
         else
         {
-            return;
+            RaycastHit hit;
+            if (Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hit, range))
+            {
+                CreateHitImpact(hit);
+                Debug.Log("I hit this thing: " + hit.transform.name);
+
+                EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
+                if (target != null)
+                {
+                    target.TakeDamage(damage);
+                }
+            }
         }
     }
 
@@ -59,14 +107,13 @@ public class Weapon : MonoBehaviour
 
         if (hit.transform.GetComponent<EnemyHealth>() != null)
         {
-            impact = fleshHitEffect;  
+            impact = fleshHitEffect;
         }
         else
         {
-            impact = hitEffect;  
+            impact = hitEffect;
         }
 
-        
         GameObject instantiatedImpact = Instantiate(impact, hit.point, Quaternion.LookRotation(hit.normal));
         instantiatedImpact.transform.parent = hit.transform;
         Destroy(instantiatedImpact, 1);
