@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6447776591435998397}
   - component: {fileID: 5200551979765265742}
   - component: {fileID: 8744368555545438354}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MagzineEjector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6471285281786773510}
   - component: {fileID: 2210551528065160647}
   - component: {fileID: 338577704183619159}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UpperRail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 5917655732183233644}
   - component: {fileID: 6780663198786272437}
   - component: {fileID: 7153229488686658517}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MainBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 5110818025515261837}
   - component: {fileID: 1437227082391908784}
   - component: {fileID: 3660863012397911863}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 4274019361004944209}
   - component: {fileID: 2198553731323407694}
   - component: {fileID: 6019966955100910024}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bolts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 1919500302608914158}
   - component: {fileID: 8697215226648208658}
   - component: {fileID: 219842563963238171}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bolts.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 7987726813846138235}
   - component: {fileID: 8663833534269690726}
   - component: {fileID: 4672473786391192804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Magzine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 4696598873302647634}
   - component: {fileID: 5868030976555436853}
   - component: {fileID: 6441704010890943505}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -659,7 +659,7 @@ GameObject:
   - component: {fileID: 2444753414132621211}
   - component: {fileID: 5441343812675167532}
   - component: {fileID: 5142798021656031597}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BarrelDe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 1243936415472228707}
   - component: {fileID: 5906244194812750354}
   - component: {fileID: 5344609830541296994}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ButtRail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +821,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6486117510027243451}
   - component: {fileID: 5354034277873489756}
-  m_Layer: 0
+  - component: {fileID: 653885010}
+  - component: {fileID: 653885011}
+  m_Layer: 8
   m_Name: AWM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -856,6 +858,7 @@ Transform:
   - {fileID: 6471285281786773510}
   - {fileID: 5917655732183233644}
   - {fileID: 9021166192404052743}
+  - {fileID: 4580502844593947805}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -869,7 +872,7 @@ Animator:
   m_GameObject: {fileID: 5098845673263889103}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ae451676802b71c4aad4d689ea0e268f, type: 2}
+  m_Controller: {fileID: 9100000, guid: f78ef454bdf38d247b765d5612e26954, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -878,6 +881,51 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &653885010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5098845673263889103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507425835cc4e924cadf3b6649c82a34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sniperOverlayCanvas: {fileID: 0}
+  sniperOverlayCamera: {fileID: 0}
+  zoomDelay: 0.3
+--- !u!114 &653885011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5098845673263889103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f39e22cced2db48b13c085403f827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FPCamera: {fileID: 0}
+  range: 100
+  damage: 50
+  muzzleFlash: {fileID: 2577353819992859602}
+  hitEffect: {fileID: 1667750840212828167, guid: 9999a1e41fc417a4c8c2ba3d5d65df64, type: 3}
+  ammoSlot: {fileID: 0}
+  ammoType: 3
+  timeBetweenShots: 0
+  pellets: 10
+  spreadAngle: 5
+  isShotgun: 0
+  recoil: {fileID: 0}
+  isAutomatic: 0
+  weaponType: 3
+  fleshHitEffect: {fileID: 1152437240241650172, guid: 5b87e506732748e4285a449585cc8ce5, type: 3}
+  reloadTime: 2
+  audioSource: {fileID: 0}
+  shootSound: {fileID: 0}
 --- !u!1 &5165800179658505331
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +937,7 @@ GameObject:
   - component: {fileID: 6495653415092800424}
   - component: {fileID: 6930267556862248666}
   - component: {fileID: 3737276610201250825}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -970,7 +1018,7 @@ GameObject:
   - component: {fileID: 5143384536693406968}
   - component: {fileID: 3617845138018313989}
   - component: {fileID: 7654526871449478198}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Connector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1051,7 +1099,7 @@ GameObject:
   - component: {fileID: 7316173570725226479}
   - component: {fileID: 7208258685694822265}
   - component: {fileID: 8888042354913219618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1132,7 +1180,7 @@ GameObject:
   - component: {fileID: 6570459716780396167}
   - component: {fileID: 4110319849273000550}
   - component: {fileID: 4088916779675766036}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bolts.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1213,7 +1261,7 @@ GameObject:
   - component: {fileID: 6224546502171861483}
   - component: {fileID: 6941512792346596156}
   - component: {fileID: 3236961054243498613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1294,7 +1342,7 @@ GameObject:
   - component: {fileID: 8407858933620213939}
   - component: {fileID: 1599057607374946929}
   - component: {fileID: 4775936270749315015}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1375,7 +1423,7 @@ GameObject:
   - component: {fileID: 3341905958792469676}
   - component: {fileID: 1100128727455835122}
   - component: {fileID: 3060893755390332207}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoltHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1456,7 +1504,7 @@ GameObject:
   - component: {fileID: 6758495054144616742}
   - component: {fileID: 1521029424515763132}
   - component: {fileID: 5962727021024144845}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ButtDe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1537,7 +1585,7 @@ GameObject:
   - component: {fileID: 3663318174621601473}
   - component: {fileID: 7741218596183308221}
   - component: {fileID: 6385078723549970439}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ButtStock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1618,7 +1666,7 @@ GameObject:
   - component: {fileID: 598546685129708341}
   - component: {fileID: 6769238340385857679}
   - component: {fileID: 1766536747744708505}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1703,7 +1751,7 @@ GameObject:
   - component: {fileID: 7003872928306468811}
   - component: {fileID: 6679686179708819501}
   - component: {fileID: 7117782653742829527}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Backbody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1773,6 +1821,81 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &1291685492346565262
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6486117510027243451}
+    m_Modifications:
+    - target: {fileID: 113037269559750531, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6975278
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.71655774
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 91.54201
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360542172024696037, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_Name
+      value: Muzzle Flash
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360542172024696037, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+--- !u!4 &4580502844593947805 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3350055855090824723, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+  m_PrefabInstance: {fileID: 1291685492346565262}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2577353819992859602 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3614249443508621660, guid: 4a60d8477aafac045a1f56d3a60c7813, type: 3}
+  m_PrefabInstance: {fileID: 1291685492346565262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4647059424238286913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1839,6 +1962,10 @@ PrefabInstance:
     - target: {fileID: 5245366053043290907, guid: d01c485267a3fb148900e93b9f699c8b, type: 3}
       propertyPath: m_Name
       value: Scope (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245366053043290907, guid: d01c485267a3fb148900e93b9f699c8b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d01c485267a3fb148900e93b9f699c8b, type: 3}
