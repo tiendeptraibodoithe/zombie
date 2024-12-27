@@ -555,7 +555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1995dab12a85e4e8abe6896db4c223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponAnimator: {fileID: 0}
   virtualCamera: {fileID: 3345834570446950328}
   zoomedInFieldOfView: 20
   sniperZoomedInFieldOfView: 10
@@ -601,22 +600,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6338586016172275154}
     m_Modifications:
-    - target: {fileID: 653885010, guid: 9c0982a4169ec8b41867b79d6e1e665f, type: 3}
-      propertyPath: sniperOverlayCamera
-      value: 
-      objectReference: {fileID: 8415303881990136697}
-    - target: {fileID: 653885011, guid: 9c0982a4169ec8b41867b79d6e1e665f, type: 3}
-      propertyPath: recoil
-      value: 
-      objectReference: {fileID: 3090304292959890227}
-    - target: {fileID: 653885011, guid: 9c0982a4169ec8b41867b79d6e1e665f, type: 3}
-      propertyPath: FPCamera
-      value: 
-      objectReference: {fileID: 3102934084288694664}
-    - target: {fileID: 653885011, guid: 9c0982a4169ec8b41867b79d6e1e665f, type: 3}
-      propertyPath: ammoSlot
-      value: 
-      objectReference: {fileID: 1622894415045526984}
     - target: {fileID: 5098845673263889103, guid: 9c0982a4169ec8b41867b79d6e1e665f, type: 3}
       propertyPath: m_Name
       value: AWM
@@ -938,6 +921,10 @@ PrefabInstance:
       value: SniperOverlayCamera
       objectReference: {fileID: 0}
     - target: {fileID: 2913727675583467569, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913727675583467569, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.21
       objectReference: {fileID: 0}
@@ -1095,7 +1082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7194606122378588445, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7194606122378588445, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1136,6 +1123,18 @@ PrefabInstance:
     - target: {fileID: 7194606122378588445, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 14.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409419434522004857, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9b96e64aefb95554993c7abb9f5c9eae, type: 2}
+    - target: {fileID: 7409419434523774873, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409419434524005305, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7511330562731945296, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_Controller
@@ -1264,10 +1263,5 @@ Transform:
 --- !u!1 &8418174558400675046 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2532275672451173003, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
-  m_PrefabInstance: {fileID: 6338586017970468461}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8415303881990136697 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2539471831365047572, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
   m_PrefabInstance: {fileID: 6338586017970468461}
   m_PrefabAsset: {fileID: 0}

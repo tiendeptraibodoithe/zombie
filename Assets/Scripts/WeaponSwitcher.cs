@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponSwitcher : MonoBehaviour
 {
-    [SerializeField] int currentWeapon = 0;
-    // Start is called before the first frame update
+    [SerializeField] public int currentWeapon = 0;
+
+    public event Action<int> OnWeaponChanged; // Sự kiện thông báo vũ khí đã thay đổi
+
     void Start()
     {
         SetWeaponActive();
@@ -16,28 +19,23 @@ public class WeaponSwitcher : MonoBehaviour
         int weaponIndex = 0;
         foreach (Transform weapon in transform)
         {
-            if(weaponIndex == currentWeapon)
-            {
-                weapon.gameObject.SetActive(true);
-            }
-            else
-            {
-                weapon.gameObject.SetActive(false);
-            }
+            bool isActive = weaponIndex == currentWeapon;
+            weapon.gameObject.SetActive(isActive);
+
             weaponIndex++;
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         int previousWeapon = currentWeapon;
 
         ProcessKeyInput();
 
-        if(previousWeapon != currentWeapon)
+        if (previousWeapon != currentWeapon)
         {
             SetWeaponActive();
+            OnWeaponChanged?.Invoke(currentWeapon); // Gọi sự kiện khi đổi vũ khí
         }
     }
 
@@ -52,5 +50,4 @@ public class WeaponSwitcher : MonoBehaviour
             currentWeapon = 1;
         }
     }
-
 }

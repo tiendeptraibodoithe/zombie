@@ -6,9 +6,9 @@ using StarterAssets;
 
 public class WeaponZoom : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera virtualCamera; // Thêm biến để tham chiếu đến Virtual Camera
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private float zoomedInFieldOfView = 20.0f;
-    [SerializeField] private float sniperZoomedInFieldOfView = 10.0f; // FOV cho súng bắn tỉa
+    [SerializeField] private float sniperZoomedInFieldOfView = 10.0f;
     [SerializeField] private float zoomedMouseSensitivityFactor = 0.1f;
 
     private WeaponAnimator weaponAnimator;
@@ -16,23 +16,39 @@ public class WeaponZoom : MonoBehaviour
     private float baseFieldOfView;
     private bool isZoomed = false;
 
+    private WeaponSwitcher weaponSwitcher;
+
     private void Start()
     {
-        baseFieldOfView = virtualCamera.m_Lens.FieldOfView; // Lấy FOV ban đầu từ Cinemachine Virtual Camera
+        baseFieldOfView = virtualCamera.m_Lens.FieldOfView;
         fpsController = FindObjectOfType<FirstPersonController>();
-        UpdateActiveWeapon();
+
+        weaponSwitcher = FindObjectOfType<WeaponSwitcher>();
+        if (weaponSwitcher != null)
+        {
+            weaponSwitcher.OnWeaponChanged += UpdateActiveWeapon; // Đăng ký sự kiện
+        }
+
+        UpdateActiveWeapon(weaponSwitcher != null ? weaponSwitcher.currentWeapon : 0);
     }
 
-    private void UpdateActiveWeapon()
+    private void OnDestroy()
     {
-        Transform weaponsTransform = transform.Find("CameraRot/CameraRecoil/MainCamera/Weapons");
-        Debug.Log("Weapons Transform found: " + (weaponsTransform != null));
+        if (weaponSwitcher != null)
+        {
+            weaponSwitcher.OnWeaponChanged -= UpdateActiveWeapon; // Hủy đăng ký sự kiện
+        }
+    }
+
+    private void UpdateActiveWeapon(int weaponIndex)
+    {
+        Transform weaponsTransform = weaponSwitcher.transform;
+        Debug.Log("Updating active weapon for index: " + weaponIndex);
 
         if (weaponsTransform != null)
         {
             foreach (Transform weapon in weaponsTransform)
             {
-                Debug.Log("Checking weapon: " + weapon.name + ", Active: " + weapon.gameObject.activeInHierarchy);
                 if (weapon.gameObject.activeInHierarchy)
                 {
                     weaponAnimator = weapon.GetComponent<WeaponAnimator>();
@@ -47,9 +63,10 @@ public class WeaponZoom : MonoBehaviour
     {
         if (weaponAnimator == null)
         {
-            UpdateActiveWeapon();
+            UpdateActiveWeapon(weaponSwitcher != null ? weaponSwitcher.currentWeapon : 0);
             return;
         }
+
         if (Input.GetMouseButtonDown(1))
         {
             StopAllCoroutines();
@@ -72,22 +89,21 @@ public class WeaponZoom : MonoBehaviour
         float animTime = weaponAnimator.ZoomAnimTime;
         float elapsed = 0f;
 
-        float startFieldOfView = virtualCamera.m_Lens.FieldOfView; // Sử dụng FOV từ Virtual Camera
+        float startFieldOfView = virtualCamera.m_Lens.FieldOfView;
         float endFieldOfView = zoomIn ? GetZoomedInFieldOfView() : baseFieldOfView;
 
         while (elapsed < animTime)
         {
             float currentFieldOfView = Mathf.Lerp(startFieldOfView, endFieldOfView, elapsed / animTime);
-            virtualCamera.m_Lens.FieldOfView = currentFieldOfView; // Thay đổi FOV của Virtual Camera
+            virtualCamera.m_Lens.FieldOfView = currentFieldOfView;
             elapsed += Time.deltaTime;
             yield return null;
         }
-        virtualCamera.m_Lens.FieldOfView = endFieldOfView; // Đảm bảo FOV cuối cùng đúng
+        virtualCamera.m_Lens.FieldOfView = endFieldOfView;
     }
 
     private float GetZoomedInFieldOfView()
     {
-        // Kiểm tra nếu vũ khí hiện tại là súng bắn tỉa
         if (weaponAnimator is SniperAnimator)
         {
             return sniperZoomedInFieldOfView;
